@@ -3,11 +3,7 @@ using System.Collections.Generic;
 
 
 // CLASSE ItemCompra
-// Representa UM produto da lista de compras, guardando junto
-// as suas informações (nome, quantidade, preço unitário e valor total do item).
-// Sem essa classe, teríamos que usar variáveis soltas que se perdem
-// a cada novo produto digitado.
-
+//
 class ItemCompra
 {
     public string Produto { get; set; } = "";  
@@ -21,18 +17,15 @@ class Program
     static void Main()
     {
         // MÓDULO 1: DECLARAÇÃO DE VARIÁVEIS E ESTRUTURAS
-        // - "itens": lista que vai guardar TODOS os produtos digitados
-        //   durante a execução (cada posição é um ItemCompra).
-        // - "total": acumula a soma dos valores de todos os itens.
+        // "itens": lista que vai guardar TODOS os produtos digitados
         List<ItemCompra> itens = new List<ItemCompra>();
         decimal total = 0;
 
         Console.WriteLine("============ Lista de Compras. ============ ");
 
-        //MÓDULO 2: LOOP PRINCIPAL(do ...while)
-        // Repete o bloco de código pelo menos uma vez, e continua
-        // repetindo enquanto o usuário responder "s" na pergunta
-        // "Deseja adicionar outro produto?".
+        // MÓDULO 2: LOOP PRINCIPAL (do...while)
+        // Repete o bloco de código enquanto o programa estiver em execução.
+        // O loop é encerrado pelo "break" quando o usuário digita FIM ou FINALIZAR.
 
         do
         {
@@ -88,6 +81,7 @@ class Program
 
 
             Console.WriteLine("\n--- Lista de Compras ---");
+            Console.WriteLine("!!! Digite Fim para sair !!!");
             foreach (ItemCompra item in itens)
             {
                 Console.WriteLine($"{item.Produto} | Qtd: {item.Quantidade} | Preço: {item.Preco:C} | Valor: {item.Valor:C}");
@@ -96,15 +90,17 @@ class Program
             Console.WriteLine($"Total da compra: {total:C}");
 
             // MÓDULO 2.5: CONTROLE DE REPETIÇÃO
-            // A resposta é guardada em "continuar" e testada na
-            // condição do "while" para decidir se o loop roda de novo.
+            // O while (true) mantém o loop funcionando continuamente.
+            // Quando o usuário digita FIM ou FINALIZAR, o comando "break"
+            // encerra o loop e o programa segue para a finalização.
 
 
         } while (true);
 
         // MÓDULO 3: FINALIZAÇÃO
-        // Executado quando o usuário responde algo diferente de "s",
-        // encerrando o loop. Mostra a mensagem final com o total.
+        // Executado após o "break", quando o usuário digita FIM ou FINALIZAR.
+        // Mostra uma mensagem informando que a compra foi finalizada
+        // e apresenta o total da compra.
 
 
 
